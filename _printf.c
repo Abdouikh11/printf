@@ -1,5 +1,5 @@
 #include "main.h"
-
+void print_buffer(char buffer[], int *buff_ind);
 /**
  * _printf - The function printf
  * @format: format of the printf
@@ -51,10 +51,9 @@ int _printf(const char *format, ...)
  * @buff_ind: Index at which to add next charch is the lenghth
  *
  */
-void print_buffer(char buffer[], int *buff_ind);
 void print_buffer(char buffer[], int *buff_ind)
 {
-	if (8buff_ind > 0)
+	if (*buff_ind > 0)
 		write(1, &buffer[0], *buff_ind);
 	*buff_ind = 0;
 }
