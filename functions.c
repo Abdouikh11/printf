@@ -10,10 +10,9 @@
  * Return: returns number of chars printed
  **/
 
-int print_sting(va_list types, char buffer[], int flags, int width,
+int print_string(va_list types, char buffer[], int flags, int width,
 		int precision, int size)
 {
-	int flags, width, precision, size;
 	int lens = 0, i;
 	char *st = va_arg(types, char *);
 
@@ -79,14 +78,14 @@ int print_char(va_list types, char buffer[], int flags, int width,
  * @size: size specifier
  * Return: returns number of chars printed
  */
-int print_percent(va_list types, char buffer[],
+int print_percent(va_list types, char buffer[], 
 		int flags, int width, int precision, int size)
 {
 	UNUSED(types);
 	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(width);
-	UNUSED(precesion);
+	UNUSED(precision);
 	UNUSED(size);
 	return (write(1, "%%", 1));
 }
@@ -110,7 +109,7 @@ int print_int(va_list types, char buffer[], int flags, int width,
 
 	nm = convert_size_number(nm, size);
 	if (nm == 0)
-		buffer[i--] == '0';
+		buffer[i--] = '0';
 	buffer[BUFF_SIZE - 1] = '\0';
 	nums = (unsigned long int)nm;
 	if (nm < 0)

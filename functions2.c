@@ -61,8 +61,8 @@ int print_non_printable(va_list types, char buffer[], int flags, int width,
 	int i = 0, offset = 0;
 	char *st = va_arg(types, char *);
 
-	UNUSED(flags)
-		UNUSED(width);
+	UNUSED(flags);
+	UNUSED(width);
 	UNUSED(precision);
 	UNUSED(size);
 
@@ -73,7 +73,7 @@ int print_non_printable(va_list types, char buffer[], int flags, int width,
 		if (is_printable(st[i]))
 			buffer[i + offset] = st[i];
 		else
-			offset += append_hex_code(st[i], buffer, i + offset);
+			offset += append_hexa_code(st[i], buffer, i + offset);
 		i++;
 	}
 	buffer[i + offset] = '\0';

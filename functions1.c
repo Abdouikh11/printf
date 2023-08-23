@@ -13,7 +13,7 @@
 int print_unsigned(va_list types, char buffer[], int flags, int width,
 		int precision, int size)
 {
-	int i = BUFF_size - 2;
+	int i = BUFF_SIZE - 2;
 	unsigned long int nmbs = va_arg(types, unsigned long int);
 
 	nmbs = convert_size_unsgnd(nmbs, size);
@@ -23,7 +23,7 @@ int print_unsigned(va_list types, char buffer[], int flags, int width,
 	while (nmbs > 0)
 	{
 		buffer[i--] = (nmbs % 10) + '0';
-		numbs /= 10;
+		nmbs /= 10;
 	}
 	i++;
 	return (write_unsgnd(0, i, buffer, flags, width, precision, size));
@@ -59,7 +59,7 @@ int print_octal(va_list types, char buffer[], int flags, int width,
 	if (flags & F_HASH && int_nm != 0)
 		buffer[i--] = '0';
 	i++;
-	return (write_unsgnd(0, i, buffer, flags, width, precesion, size));
+	return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
 /**
  * print_hexadecimal - Prints an unsigned number in hexa
@@ -81,7 +81,7 @@ int print_hexadecimal(va_list types, char buffer[], int flags, int width,
 int print_hexa_upper(va_list types, char buffer[], int flags, int width,
 		int precision, int size)
 {
-	return (print_hexa(types, "0123456789ABCDEF", buffer, flags, "X",
+	return (print_hexa(types, "0123456789ABCDEF", buffer, flags, 'X',
 				width, precision, size));
 }
 /**
@@ -105,7 +105,7 @@ int print_hexa(va_list types, char map_to[], char buffer[],
 
 	UNUSED(width);
 
-	nmbs = conver_size_unsgnd(nmbs, size);
+	nmbs = convert_size_unsgnd(nmbs, size);
 	if (nmbs == 0)
 		buffer[i--] = '0';
 	buffer[BUFF_SIZE - 1] = '\0';
